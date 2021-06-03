@@ -17,7 +17,7 @@
   "scripts": {
     "dev": "concurrently \"npm run start\" \"npm run db\"",
     "start": "react-scripts start",
-    "db": "npx json-server --watch db.json --port 3004",
+    "db": "npx json-server --watch db.json --id _id --port 3004",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
