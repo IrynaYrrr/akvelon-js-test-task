@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const InvoicesTable = () => {
     const [error, setError] = useState(null);
@@ -38,16 +39,22 @@ const InvoicesTable = () => {
                                 <th>No</th>
                                 <th>Supply</th>
                                 <th>Comment</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
                             {items.map(item => {
                                 return (
-                                    <tr key={item.id}>
+                                    <tr key={item._id}>
                                         <td>{item.date_created}</td>
                                         <td><a href="#">INV-{item.number}</a></td>
                                         <td>{item.date_supplied}</td>
                                         <td>{item.comment}</td>
+                                        <td>
+                                            <Link to={`/edit/${item._id}`}>
+                                                <button className="button-edit">Edit</button>
+                                            </Link>
+                                        </td>
                                     </tr>
                                 );
                             })}

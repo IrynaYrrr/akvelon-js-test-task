@@ -1,6 +1,7 @@
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Invoices from './Pages/Invoices';
 import Create from './Pages/Create';
+import Edit from './Pages/Edit';
 
 function App() {
     return (
@@ -11,6 +12,9 @@ function App() {
                 </Route>
                 <Route path="/create" exact>
                     <Create />
+                </Route>
+                <Route path="/edit/:id" exact>
+                    <Edit />
                 </Route>
                 <Redirect to="/" />
             </Switch>
