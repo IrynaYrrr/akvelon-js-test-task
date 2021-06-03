@@ -56,7 +56,10 @@ const EditBody = () => {
             .then(
                 (result) => {
                     setIsLoaded(true);
-                    history.push('/');
+                    // Because of json-server reloading:
+                    setTimeout(() => {
+                        history.push('/');
+                    }, 100);
                 },
                 (error) => {
                     setIsLoaded(true);
