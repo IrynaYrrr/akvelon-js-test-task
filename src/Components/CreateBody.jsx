@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import dayjs from 'dayjs';
 
 const CreateBody = () => {
     const [number, setNumber] = useState('');
@@ -20,7 +21,12 @@ const CreateBody = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ number, date_created, date_supplied, comment })
+            body: JSON.stringify({
+                number,
+                date_created: dayjs(date_created).format('DD-MM-YYYY'),
+                date_supplied: dayjs(date_supplied).format('DD-MM-YYYY'),
+                comment
+            })
         })
             .then(res => res.json())
             .then(
@@ -42,20 +48,34 @@ const CreateBody = () => {
                     <form action="">
                         <p>
                             <label htmlFor="number">Number:</label>
-                            <input name="number" id="number" type="text" value={number} onChange={e => setNumber(e.target.value)} />
+                            <input name="number" id="number"
+                                type="text"
+                                value={number}
+                                onChange={e => setNumber(e.target.value)} />
                         </p>
                         <p>
                             <label htmlFor="date_created">Invoice Date:</label>
-                            <input name="date_created" id="date_created" type="date" value={date_created} onChange={e => setDateCreated(e.target.value)} />
+                            <input name="date_created" id="date_created"
+                                type="date"
+                                value={date_created}
+                                onChange={e => setDateCreated(e.target.value)} />
                         </p>
                         <p>
                             <label htmlFor="date_supplied">Supply Date:</label>
-                            <input name="date_supplied" id="date_supplied" type="date" value={date_supplied} onChange={e => setDateSupplied(e.target.value)} />
+                            <input name="date_supplied" id="date_supplied"
+                                type="date"
+                                value={date_supplied}
+                                onChange={e => setDateSupplied(e.target.value)} />
                         </p>
 
                         <p className="full-width">
                             <label htmlFor="comment">Comment:</label>
-                            <textarea name="comment" id="comment" cols="30" rows="3" value={comment} onChange={e => setComment(e.target.value)} />
+                            <textarea name="comment"
+                                id="comment"
+                                cols="30"
+                                rows="3"
+                                value={comment}
+                                onChange={e => setComment(e.target.value)} />
                         </p>
                         <p>
 
