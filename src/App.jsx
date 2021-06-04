@@ -2,6 +2,7 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import Invoices from './Pages/Invoices';
 import Create from './Pages/Create';
 import Edit from './Pages/Edit';
+import Delete from './Pages/Delete';
 
 function App() {
     return (
@@ -15,6 +16,9 @@ function App() {
                 </Route>
                 <Route path="/edit/:id" exact>
                     <Edit />
+                </Route>
+                <Route path="/delete/:id" exact>
+                    <Delete />
                 </Route>
                 <Redirect to="/" />
             </Switch>

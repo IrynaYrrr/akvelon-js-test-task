@@ -1,6 +1,6 @@
 * {
   font-family: sans-serif;
-  font-size: large;
+  font-size: large; 
 }
 
 body {
@@ -81,16 +81,29 @@ body {
   padding: 10px 25px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .button-edit {
   border: 0;
   border-radius: 3px;
-  background: #4676D7;
+  background: #7abe0c;
   color: #fff;
-  padding: 10px 40px;
+  padding: 10px 30px;
   font-size: 16px;
   font-weight: bold;
+  cursor: pointer;
+}
+
+.button-delete {
+  border: 0;
+  border-radius: 3px;
+  background: #db1919;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
 }
 
 .caption {

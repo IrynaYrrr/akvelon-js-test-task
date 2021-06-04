@@ -40,6 +40,7 @@ const InvoicesTable = () => {
                                 <th>Supply</th>
                                 <th>Comment</th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -53,6 +54,11 @@ const InvoicesTable = () => {
                                         <td>
                                             <Link to={`/edit/${item._id}`}>
                                                 <button className="button-edit">Edit</button>
+                                            </Link>
+                                        </td>
+                                        <td>
+                                            <Link to={`/delete/${item._id}`}>
+                                                <button className="button-delete">Delete</button>
                                             </Link>
                                         </td>
                                     </tr>
