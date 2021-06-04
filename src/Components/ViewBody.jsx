@@ -5,7 +5,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
 
-const EditBody = () => {
+const ViewBody = () => {
     const id = useParams().id;
     const [number, setNumber] = useState('');
     const [date_created, setDateCreated] = useState('');
@@ -39,33 +39,8 @@ const EditBody = () => {
     // Save data
     const handleSubmit = e => {
         e.preventDefault();
+        history.push('/');
 
-        fetch(`/invoices/${id}`, {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                number,
-                date_created: dayjs(date_created).format('DD-MM-YYYY'),
-                date_supplied: dayjs(date_supplied).format('DD-MM-YYYY'),
-                comment
-            })
-        })
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setIsLoaded(true);
-                    // Because of json-server reloading:
-                    setTimeout(() => {
-                        history.push('/');
-                    }, 100);
-                },
-                (error) => {
-                    setIsLoaded(true);
-                    setError(error);
-                }
-            );
     };
 
     return (
@@ -75,26 +50,24 @@ const EditBody = () => {
                     <form action="">
                         <p>
                             <label htmlFor="number">Number:</label>
-                            <input name="number" id="number" type="text" value={number} onChange={e => setNumber(e.target.value)} />
+                            <input name="number" id="number" type="text" disabled value={number} onChange={e => setNumber(e.target.value)} />
                         </p>
                         <p>
                             <label htmlFor="date_created">Invoice Date:</label>
-                            <input name="date_created" id="date_created" type="date" value={date_created} onChange={e => setDateCreated(e.target.value)} />
+                            <input name="date_created" id="date_created" type="date" disabled value={date_created} onChange={e => setDateCreated(e.target.value)} />
                         </p>
                         <p>
                             <label htmlFor="date_supplied">Supply Date:</label>
-                            <input name="date_supplied" id="date_supplied" type="date" value={date_supplied} onChange={e => setDateSupplied(e.target.value)} />
+                            <input name="date_supplied" id="date_supplied" type="date" disabled value={date_supplied} onChange={e => setDateSupplied(e.target.value)} />
                         </p>
-
                         <p className="full-width">
                             <label htmlFor="comment">Comment:</label>
-                            <textarea name="comment" id="comment" cols="30" rows="3" value={comment} onChange={e => setComment(e.target.value)} />
+                            <textarea name="comment" id="comment" cols="30" rows="3" value={comment} disabled onChange={e => setComment(e.target.value)} />
                         </p>
                         <p>
-
                         </p>
                         <div className="button-right">
-                            <button className="button">Save</button>
+                            <button className="button">Back</button>
                         </div>
                     </form>
                 </div>
@@ -103,4 +76,4 @@ const EditBody = () => {
     );
 };
 
-export default EditBody;
+export default ViewBody;

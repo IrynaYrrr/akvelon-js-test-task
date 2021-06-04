@@ -3,6 +3,7 @@ import Invoices from './Pages/Invoices';
 import Create from './Pages/Create';
 import Edit from './Pages/Edit';
 import Delete from './Pages/Delete';
+import View from './Pages/View';
 
 function App() {
     return (
@@ -13,6 +14,9 @@ function App() {
                 </Route>
                 <Route path="/create" exact>
                     <Create />
+                </Route>
+                <Route path="/view/:id" exact>
+                    <View />
                 </Route>
                 <Route path="/edit/:id" exact>
                     <Edit />
